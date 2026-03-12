@@ -13,12 +13,12 @@ const fetchAutores = async (params = {}) => {
       message: '',
     };
   } catch (error) {
-    console.error(error.message);
+    const backendMsg = error.response?.data?.message;
     return {
       data: [],
       pagination: {},
       success: false,
-      message: 'Erro ao buscar autores.',
+      message: backendMsg || 'Erro ao buscar autores.',
     };
   }
 };
@@ -32,11 +32,11 @@ const fetchAutor = async (id) => {
       message: '',
     };
   } catch (error) {
-    console.error(error.message);
+    const backendMsg = error.response?.data?.message;
     return {
       data: null,
       success: false,
-      message: 'Erro ao buscar o autor.',
+      message: backendMsg || 'Erro ao buscar o autor.',
     };
   }
 };
@@ -54,7 +54,7 @@ const createAutor = async (form) => {
     return {
       data: data?.data || null,
       success: false,
-      message: 'Erro ao cadastrar o autor.',
+      message: data?.message || 'Erro ao cadastrar o autor.',
     };
   }
 };
@@ -72,7 +72,7 @@ const updateAutor = async (id, form) => {
     return {
       data: data?.data || null,
       success: false,
-      message: 'Erro ao atualizar o autor.',
+      message: data?.message || 'Erro ao atualizar o autor.',
     };
   }
 };
@@ -85,10 +85,10 @@ const deleteAutor = async (id) => {
       message: 'Autor excluído com sucesso.',
     };
   } catch (error) {
-    console.error(error.message);
+    const backendMsg = error.response?.data?.message;
     return {
       success: false,
-      message: 'Erro ao excluir o autor.',
+      message: backendMsg || 'Erro ao excluir o autor.',
     };
   }
 };

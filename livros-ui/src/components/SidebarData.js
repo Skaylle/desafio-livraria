@@ -3,6 +3,12 @@ import * as FaIcons from 'react-icons/fa';
 
 export const SidebarData = [
     {
+        title: 'Home',
+        path: '/',
+        icon: <FaIcons.FaBook   />,
+        cName: 'nav-text'
+    },
+    {
         title: 'Livros',
         path: '/livros',
         icon: <FaIcons.FaBook   />,

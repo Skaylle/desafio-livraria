@@ -6,7 +6,6 @@ const CONTROLLER = "livros";
 const fetchLivros = async (params = {}) => {
   try {
     const response = await axios.get(`${API_URL}/${CONTROLLER}`, { params });
-
     return {
       data: response?.data?.data || [],
       pagination: response?.data?.meta || {},
@@ -14,13 +13,12 @@ const fetchLivros = async (params = {}) => {
       message: '',
     };
   } catch (error) {
-    console.error(error.message);
-
+    const backendMsg = error.response?.data?.message;
     return {
       data: [],
       pagination: {},
       success: false,
-      message: 'Erro ao buscar livros.',
+      message: backendMsg || 'Erro ao buscar livros.',
     };
   }
 };
@@ -28,19 +26,17 @@ const fetchLivros = async (params = {}) => {
 const fetchLivro = async (id) => {
   try {
     const response = await axios.get(`${API_URL}/${CONTROLLER}/${id}`);
-
     return {
       data: response?.data?.data || null,
       success: true,
       message: '',
     };
   } catch (error) {
-    console.error(error.message);
-
+    const backendMsg = error.response?.data?.message;
     return {
       data: null,
       success: false,
-      message: 'Erro ao buscar o livro.',
+      message: backendMsg || 'Erro ao buscar o livro.',
     };
   }
 };
@@ -48,19 +44,17 @@ const fetchLivro = async (id) => {
 const createLivro = async (form) => {
   try {
     const response = await axios.post(`${API_URL}/${CONTROLLER}`, form);
-
     return {
       data: response?.data?.data || null,
       success: true,
       message: 'Livro cadastrado com sucesso.',
     };
   } catch (error) {
-    console.error(error.message);
-
+    const backendMsg = error.response?.data?.message;
     return {
       data: null,
       success: false,
-      message: 'Erro ao cadastrar o livro.',
+      message: backendMsg || 'Erro ao cadastrar o livro.',
     };
   }
 };
@@ -68,19 +62,17 @@ const createLivro = async (form) => {
 const updateLivro = async (id, form) => {
   try {
     const response = await axios.put(`${API_URL}/${CONTROLLER}/${id}`, form);
-
     return {
       data: response?.data?.data || null,
       success: true,
       message: 'Livro atualizado com sucesso.',
     };
   } catch (error) {
-    console.error(error.message);
-
+    const backendMsg = error.response?.data?.message;
     return {
       data: null,
       success: false,
-      message: 'Erro ao atualizar o livro.',
+      message: backendMsg || 'Erro ao atualizar o livro.',
     };
   }
 };
@@ -88,17 +80,15 @@ const updateLivro = async (id, form) => {
 const deleteLivro = async (id) => {
   try {
     await axios.delete(`${API_URL}/${CONTROLLER}/${id}`);
-
     return {
       success: true,
       message: 'Livro excluído com sucesso.',
     };
   } catch (error) {
-    console.error(error.message);
-
+    const backendMsg = error.response?.data?.message;
     return {
       success: false,
-      message: 'Erro ao excluir o livro.',
+      message: backendMsg || 'Erro ao excluir o livro.',
     };
   }
 };

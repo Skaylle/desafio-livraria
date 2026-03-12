@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import Home from './peges/Home';
 import Livros from './peges/Livros';
 import Autores from './peges/Autores';
 import Assuntos from './peges/Assuntos';
@@ -26,6 +27,7 @@ function App() {
                   style={{ marginLeft: sidebarOpen ? 250 : 0, transition: 'margin-left 0.35s' }}
                 >
                   <Routes>
+                     <Route path='/' element={<Home/>}/>
                       <Route path='/livros' element={<Livros/>}/>
                       <Route path='/livros/novo' element={<LivrosCreate/>}/>
                       <Route path='/livros/editar/:id' element={<LivrosEdit/>}/>

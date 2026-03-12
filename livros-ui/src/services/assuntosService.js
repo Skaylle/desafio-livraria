@@ -13,11 +13,12 @@ const fetchAssuntos = async (params = {}) => {
       message: '',
     };
   } catch (error) {
+    const backendMsg = error.response?.data?.message;
     return {
       data: [],
       pagination: {},
       success: false,
-      message: 'Erro ao buscar assuntos.',
+      message: backendMsg || 'Erro ao buscar assuntos.',
     };
   }
 };
@@ -31,10 +32,11 @@ const fetchAssunto = async (id) => {
       message: '',
     };
   } catch (error) {
+    const backendMsg = error.response?.data?.message;
     return {
       data: null,
       success: false,
-      message: 'Erro ao buscar o assunto.',
+      message: backendMsg || 'Erro ao buscar o assunto.',
     };
   }
 };
@@ -52,7 +54,7 @@ const createAssunto = async (form) => {
     return {
       data: data?.data || null,
       success: false,
-      message: 'Erro ao cadastrar o assunto.',
+      message: data?.message || 'Erro ao cadastrar o assunto.',
     };
   }
 };
@@ -70,7 +72,7 @@ const updateAssunto = async (id, form) => {
     return {
       data: data?.data || null,
       success: false,
-      message: 'Erro ao atualizar o assunto.',
+      message: data?.message || 'Erro ao atualizar o assunto.',
     };
   }
 };
@@ -83,9 +85,10 @@ const deleteAssunto = async (id) => {
       message: 'Assunto excluído com sucesso.',
     };
   } catch (error) {
+    const backendMsg = error.response?.data?.message;
     return {
       success: false,
-      message: 'Erro ao excluir o assunto.',
+      message: backendMsg || 'Erro ao excluir o assunto.',
     };
   }
 };

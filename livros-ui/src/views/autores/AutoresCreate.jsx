@@ -72,10 +72,12 @@ const AutoresNovo = () => {
           onBack();
         }, 500);
       } else {
-        alert(response.message);
+        // Mostra mensagem detalhada do backend se existir
+        alert(response.message || 'Erro ao cadastrar o autor.');
       }
     } catch (error) {
-      alert(error.message);
+      // Fallback para erro inesperado
+      alert(error?.response?.data?.message || error.message || 'Erro inesperado.');
     }
   };
 

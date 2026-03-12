@@ -26,7 +26,6 @@ const LivrosEdit = () => {
   const [pagination, setPagination] = useState({});
   const [selectedIds, setSelectedIds] = useState([]);
   const [defaultPageSize, setDefaultPageSize] = useState(5);
-  // Assuntos
   const [assuntos, setAssuntos] = useState([]);
   const [assuntosPagination, setAssuntosPagination] = useState({});
   const [selectedAssuntos, setSelectedAssuntos] = useState([]);
@@ -44,11 +43,11 @@ const LivrosEdit = () => {
     const result = await fetchLivro(livroId);
     if (result.success) {
       setFormValues(result.data);
-      // Marca autores relacionados
+     
       if (result.data && result.data.autores) {
         setSelectedIds(result.data.autores.map(a => a.cod_autor));
       }
-      // Marca assuntos relacionados
+      
       if (result.data && result.data.assuntos) {
         setSelectedAssuntos(result.data.assuntos.map(a => a.cod_assunto));
       }
@@ -97,7 +96,6 @@ const LivrosEdit = () => {
   const handleSaveForm = async () => {
     const { isValid, errors } = validateForm(formValues, requiredFields);
 
-    // Validação específica de ano
     if (formValues.ano_publicacao && !isValidYear(formValues.ano_publicacao)) {
       errors.ano_publicacao = true;
       setFormErrors(errors);
