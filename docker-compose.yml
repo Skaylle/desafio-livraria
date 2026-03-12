@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16
+    container_name: livros_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 111111
+      POSTGRES_DB: livros
+      TZ: America/Sao_Paulo
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+    restart: unless-stopped
+
+  app:
+    build: .
+    container_name: livros_app
+    working_dir: /var/www/html
+    volumes:
+      - ./livros-api:/var/www/html
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - LARAVEL_SAIL=true
+    restart: unless-stopped
+
+
+  ui:
+    build:
+      context: ./livros-ui
+    container_name: livros_ui
+    working_dir: /app
+    volumes:
+      - ./livros-ui:/app
+    ports:
+      - "3000:3000"
+    tty: true
+    restart: unless-stopped
+
+volumes:
+  db_data:
