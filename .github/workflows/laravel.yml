@@ -34,6 +34,24 @@ jobs:
           cd livros-api
           composer install
 
+      - name: Copiar .env
+        run: |
+          cp livros-api/.env.example livros-api/.env
+          sed -i 's/DB_CONNECTION=.*/DB_CONNECTION=pgsql/' livros-api/.env
+          sed -i 's/DB_HOST=.*/DB_HOST=localhost/' livros-api/.env
+          sed -i 's/DB_PORT=.*/DB_PORT=5432/' livros-api/.env
+          sed -i 's/DB_DATABASE=.*/DB_DATABASE=teste/' livros-api/.env
+          sed -i 's/DB_USERNAME=.*/DB_USERNAME=postgres/' livros-api/.env
+          sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=root/' livros-api/.env
+
+      - name: Verificar .env final
+        run: cat livros-api/.env
+
+      - name: Limpar cache de configuração
+        run: |
+          cd livros-api
+          php artisan config:clear
+
       - name: Rodar testes Laravel
         run: |
           cd livros-api
