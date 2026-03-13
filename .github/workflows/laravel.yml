@@ -39,8 +39,8 @@ jobs:
           cd livros-api
           composer install
 
-      - name: Verificar .env final
-        run: cat livros-api/.env
+      - name: Copiar .env.testing
+        run: cp livros-api/.env.testing livros-api/.env
 
       - name: Limpar cache de configuração
         run: |
