@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class LivroFactory extends Factory
 {
+    protected $model = \App\Models\Livro::class;
+
     public function definition(): array
     {
         return [
