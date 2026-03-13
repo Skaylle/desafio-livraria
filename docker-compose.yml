@@ -37,6 +37,7 @@ services:
     working_dir: /app
     volumes:
       - ./livros-ui:/app
+      - /app/node_modules
     ports:
       - "3000:3000"
     tty: true
