@@ -1,0 +1,40 @@
+name: CI Laravel
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: teste
+        ports:
+          - 3306:3306
+
+    steps:
+      # 1️⃣ Pegar o código
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      # 2️⃣ Setup PHP
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          extensions: mbstring, bcmath, pdo_mysql
+
+      # 3️⃣ Instalar dependências do Laravel
+      - name: Composer install
+        run: composer install
+
+      # 4️⃣ Rodar testes
+      - name: Rodar testes Laravel
+        run: php artisan test
