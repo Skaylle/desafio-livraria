@@ -18,6 +18,11 @@ jobs:
           POSTGRES_DB: teste
         ports:
           - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U postgres"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
 
     steps:
       - name: Checkout do código
@@ -51,6 +56,11 @@ jobs:
         run: |
           cd livros-api
           php artisan config:clear
+
+      - name: Rodar migrations
+        run: |
+          cd livros-api
+          php artisan migrate:fresh --seed
 
       - name: Rodar testes Laravel
         run: |
