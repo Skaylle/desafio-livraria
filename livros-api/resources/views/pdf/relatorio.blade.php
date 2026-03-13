@@ -6,17 +6,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-        .autor-table {
-            page-break-inside: avoid; /* evita quebrar o autor entre páginas */
-        }
-
         h3 {
             margin-top: 20px;
             margin-bottom: 10px;
-        }
-
-        h3:not(:first-child) {
-            page-break-before: always; /* nova página para autores 2+ */
         }
 
         table {
@@ -26,7 +18,7 @@
         }
 
         thead {
-            display: table-header-group; /* repete cabeçalho se tabela quebrar */
+            display: table-header-group;
         }
 
         th, td {
@@ -41,7 +33,7 @@
         }
 
         tr {
-            page-break-inside: avoid; /* evita quebrar linha no meio */
+            page-break-inside: avoid;
             min-height: 25px;
         }
     </style>
