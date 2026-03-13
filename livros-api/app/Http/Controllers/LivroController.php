@@ -25,8 +25,8 @@ class LivroController extends Controller
      * Display a listing of the resource.
      */
     /**
-     * @OA\Get(
-     *   path="/api/livros",
+    * @OA\Get(
+    *   path="/livros",
      *   summary="Lista todos os livros",
      *   tags={"Livros"},
      *   @OA\Parameter(
@@ -84,8 +84,8 @@ class LivroController extends Controller
      * Store a newly created resource in storage.
      */
     /**
-     * @OA\Post(
-     *   path="/api/livros",
+    * @OA\Post(
+    *   path="/livros",
      *   summary="Cadastra um novo livro",
      *   tags={"Livros"},
      *   @OA\RequestBody(
@@ -108,8 +108,8 @@ class LivroController extends Controller
      * Update the specified resource in storage.
      */
     /**
-     * @OA\Put(
-     *   path="/api/livros/{id}",
+    * @OA\Put(
+    *   path="/livros/{id}",
      *   summary="Atualiza um livro",
      *   tags={"Livros"},
      *   @OA\Parameter(
@@ -138,8 +138,8 @@ class LivroController extends Controller
      * Display the specified resource.
      */
     /**
-     * @OA\Get(
-     *   path="/api/livros/{id}",
+    * @OA\Get(
+    *   path="/livros/{id}",
      *   summary="Exibe um livro",
      *   tags={"Livros"},
      *   @OA\Parameter(
@@ -164,8 +164,8 @@ class LivroController extends Controller
      * Remove the specified resource from storage.
      */
     /**
-     * @OA\Delete(
-     *   path="/api/livros/{id}",
+    * @OA\Delete(
+    *   path="/livros/{id}",
      *   summary="Remove um livro",
      *   tags={"Livros"},
      *   @OA\Parameter(

@@ -25,8 +25,8 @@ class AutorController extends Controller
      * Display a listing of the resource.
      */
     /**
-     * @OA\Get(
-     *   path="/api/autors",
+    * @OA\Get(
+    *   path="/autors",
      *   summary="Lista todos os autores",
      *   tags={"Autores"},
      *   @OA\Parameter(
@@ -63,8 +63,8 @@ class AutorController extends Controller
      * Store a newly created resource in storage.
      */
     /**
-     * @OA\Post(
-     *   path="/api/autors",
+    * @OA\Post(
+    *   path="/autors",
      *   summary="Cadastra um novo autor",
      *   tags={"Autores"},
      *   @OA\RequestBody(
@@ -87,8 +87,8 @@ class AutorController extends Controller
      * Update the specified resource in storage.
      */
     /**
-     * @OA\Put(
-     *   path="/api/autors/{id}",
+    * @OA\Put(
+    *   path="/autors/{id}",
      *   summary="Atualiza um autor",
      *   tags={"Autores"},
      *   @OA\Parameter(
@@ -117,8 +117,8 @@ class AutorController extends Controller
      * Display the specified resource.
      */
     /**
-     * @OA\Get(
-     *   path="/api/autors/{id}",
+    * @OA\Get(
+    *   path="/autors/{id}",
      *   summary="Exibe um autor",
      *   tags={"Autores"},
      *   @OA\Parameter(
@@ -143,8 +143,8 @@ class AutorController extends Controller
      * Remove the specified resource from storage.
      */
     /**
-     * @OA\Delete(
-     *   path="/api/autors/{id}",
+    * @OA\Delete(
+    *   path="/autors/{id}",
      *   summary="Remove um autor",
      *   tags={"Autores"},
      *   @OA\Parameter(

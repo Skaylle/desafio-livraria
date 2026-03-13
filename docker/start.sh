@@ -13,11 +13,8 @@ echo "PostgreSQL pronto!"
 echo "Instalando dependências..."
 composer install
 
-echo "Rodando migrations..."
-php artisan migrate --force
-
-echo "Rodando seeders..."
-php artisan db:seed --force
+echo "limpa o banco de dados, Rodando migrations e seeders..."
+php artisan migrate:fresh --seed
 
 echo "Iniciando Laravel..."
 php artisan serve --host=0.0.0.0 --port=8000

@@ -12,13 +12,13 @@
         }
     ],
     "paths": {
-        "/api/assuntos": {
+        "/assuntos": {
             "get": {
                 "tags": [
                     "Assuntos"
                 ],
                 "summary": "Lista todos os assuntos",
-                "operationId": "6494dc2c13d5ebcdbf4222925db1a646",
+                "operationId": "b65bfc4a125a8df880e922c685bb247b",
                 "parameters": [
                     {
                         "name": "page",
@@ -68,7 +68,7 @@
                     "Assuntos"
                 ],
                 "summary": "Cadastra um novo assunto",
-                "operationId": "695b52026e2a76bf59f8450c7cc05479",
+                "operationId": "2e7489bfd9849f0707489d0f09c8263a",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -93,13 +93,13 @@
                 }
             }
         },
-        "/api/assuntos/{id}": {
+        "/assuntos/{id}": {
             "get": {
                 "tags": [
                     "Assuntos"
                 ],
                 "summary": "Exibe um assunto",
-                "operationId": "14b955e5d304ecefb8633b95183c67f2",
+                "operationId": "75184321a3ffcd363b75f3e8bd451468",
                 "parameters": [
                     {
                         "name": "id",
@@ -128,7 +128,7 @@
                     "Assuntos"
                 ],
                 "summary": "Atualiza um assunto",
-                "operationId": "adc52c6c83e59febfb4f9c965755d7e8",
+                "operationId": "3f9c17df8d02b0b4e11917bce2a048e0",
                 "parameters": [
                     {
                         "name": "id",
@@ -167,7 +167,7 @@
                     "Assuntos"
                 ],
                 "summary": "Remove um assunto",
-                "operationId": "066f8c0ddcb8dc966758fdcb63ff7ca2",
+                "operationId": "513e9acbc689a6e5f0855eb11ea43909",
                 "parameters": [
                     {
                         "name": "id",
@@ -197,13 +197,13 @@
                 }
             }
         },
-        "/api/autors": {
+        "/autors": {
             "get": {
                 "tags": [
                     "Autores"
                 ],
                 "summary": "Lista todos os autores",
-                "operationId": "9f30e4c6a9c77aa23256cd2d987840de",
+                "operationId": "36eb9ed5830f3507873d57831512c1bd",
                 "parameters": [
                     {
                         "name": "page",
@@ -253,7 +253,7 @@
                     "Autores"
                 ],
                 "summary": "Cadastra um novo autor",
-                "operationId": "6bc8c9bf141c823e9c9b8eb193d0f9a0",
+                "operationId": "5403d505b331310e83d87878b4ac06b6",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -278,13 +278,13 @@
                 }
             }
         },
-        "/api/autors/{id}": {
+        "/autors/{id}": {
             "get": {
                 "tags": [
                     "Autores"
                 ],
                 "summary": "Exibe um autor",
-                "operationId": "5dfc968217a48b09d254e61f80277b51",
+                "operationId": "100d0d8730989ac6ab2e43266b20a840",
                 "parameters": [
                     {
                         "name": "id",
@@ -313,7 +313,7 @@
                     "Autores"
                 ],
                 "summary": "Atualiza um autor",
-                "operationId": "942d8dce0dff12d1e21dcef3da708954",
+                "operationId": "ab60d140fe186713514ab8f1106cf36c",
                 "parameters": [
                     {
                         "name": "id",
@@ -352,7 +352,7 @@
                     "Autores"
                 ],
                 "summary": "Remove um autor",
-                "operationId": "b945c300ee67d02fc55108bcd57a913c",
+                "operationId": "0efc78791dfde235cf8c37816a77930f",
                 "parameters": [
                     {
                         "name": "id",
@@ -382,13 +382,13 @@
                 }
             }
         },
-        "/api/livros": {
+        "/livros": {
             "get": {
                 "tags": [
                     "Livros"
                 ],
                 "summary": "Lista todos os livros",
-                "operationId": "4ec71241f449c1ef2118b675884d8cc9",
+                "operationId": "c2638f778b25c161b5b8189172216b67",
                 "parameters": [
                     {
                         "name": "page",
@@ -465,7 +465,7 @@
                     "Livros"
                 ],
                 "summary": "Cadastra um novo livro",
-                "operationId": "5a20828782036ae7ef1b08bd8b9b34e8",
+                "operationId": "052dc25bf67cc3710e476ca8c1f49397",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -490,13 +490,13 @@
                 }
             }
         },
-        "/api/livros/{id}": {
+        "/livros/{id}": {
             "get": {
                 "tags": [
                     "Livros"
                 ],
                 "summary": "Exibe um livro",
-                "operationId": "9bd7742c17f0d3e386a8562c01e3e440",
+                "operationId": "5ee1c89a5977dcbe47813c762d44c15f",
                 "parameters": [
                     {
                         "name": "id",
@@ -525,7 +525,7 @@
                     "Livros"
                 ],
                 "summary": "Atualiza um livro",
-                "operationId": "13ee1e7476e35757d06ddab15acad152",
+                "operationId": "34f924b16d17d726283baad63b144290",
                 "parameters": [
                     {
                         "name": "id",
@@ -564,7 +564,7 @@
                     "Livros"
                 ],
                 "summary": "Remove um livro",
-                "operationId": "b64c761bf9de3b17940dd9bff70200df",
+                "operationId": "20ff1e31d004d5d38f9e8c62a3568b1f",
                 "parameters": [
                     {
                         "name": "id",

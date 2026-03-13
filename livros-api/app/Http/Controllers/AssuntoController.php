@@ -25,8 +25,8 @@ class AssuntoController extends Controller
      * Display a listing of the resource.
      */
     /**
-     * @OA\Get(
-     *   path="/api/assuntos",
+    * @OA\Get(
+    *   path="/assuntos",
      *   summary="Lista todos os assuntos",
      *   tags={"Assuntos"},
      *   @OA\Parameter(
@@ -63,8 +63,8 @@ class AssuntoController extends Controller
      * Store a newly created resource in storage.
      */
     /**
-     * @OA\Post(
-     *   path="/api/assuntos",
+    * @OA\Post(
+    *   path="/assuntos",
      *   summary="Cadastra um novo assunto",
      *   tags={"Assuntos"},
      *   @OA\RequestBody(
@@ -89,8 +89,8 @@ class AssuntoController extends Controller
      * Update the specified resource in storage.
      */
     /**
-     * @OA\Put(
-     *   path="/api/assuntos/{id}",
+    * @OA\Put(
+    *   path="/assuntos/{id}",
      *   summary="Atualiza um assunto",
      *   tags={"Assuntos"},
      *   @OA\Parameter(
@@ -121,8 +121,8 @@ class AssuntoController extends Controller
      * Display the specified resource.
      */
     /**
-     * @OA\Get(
-     *   path="/api/assuntos/{id}",
+    * @OA\Get(
+    *   path="/assuntos/{id}",
      *   summary="Exibe um assunto",
      *   tags={"Assuntos"},
      *   @OA\Parameter(
@@ -150,8 +150,8 @@ class AssuntoController extends Controller
      * Remove the specified resource from storage.
      */
     /**
-     * @OA\Delete(
-     *   path="/api/assuntos/{id}",
+    * @OA\Delete(
+    *   path="/assuntos/{id}",
      *   summary="Remove um assunto",
      *   tags={"Assuntos"},
      *   @OA\Parameter(
