@@ -31,10 +31,10 @@ jobs:
 
       - name: Composer install
         run: |
-          cd backend
+          cd livros-api
           composer install
 
       - name: Rodar testes Laravel
         run: |
-          cd backend
+          cd livros-api
           php artisan test
