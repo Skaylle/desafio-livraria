@@ -37,25 +37,25 @@ jobs:
       - name: Composer install
         run: |
           cd livros-api
-          composer install
+          composer install --no-interaction --prefer-dist --optimize-autoloader
 
-      - name: Copiar .env
+      - name: Configurar .env
         run: |
           cp livros-api/.env.example livros-api/.env
           sed -i 's/DB_CONNECTION=.*/DB_CONNECTION=pgsql/' livros-api/.env
-          sed -i 's/DB_HOST=.*/DB_HOST=localhost/' livros-api/.env
+          sed -i 's/DB_HOST=.*/DB_HOST=postgres/' livros-api/.env
           sed -i 's/DB_PORT=.*/DB_PORT=5432/' livros-api/.env
           sed -i 's/DB_DATABASE=.*/DB_DATABASE=teste/' livros-api/.env
           sed -i 's/DB_USERNAME=.*/DB_USERNAME=postgres/' livros-api/.env
           sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=root/' livros-api/.env
 
-      - name: Verificar .env final
-        run: cat livros-api/.env
-
-      - name: Limpar cache de configuração
+      - name: Limpar cache Laravel
         run: |
           cd livros-api
           php artisan config:clear
+          php artisan cache:clear
+          php artisan route:clear
+          php artisan view:clear
 
       - name: Rodar migrations
         run: |
@@ -65,4 +65,4 @@ jobs:
       - name: Rodar testes Laravel
         run: |
           cd livros-api
-          php artisan test
+          php artisan test --parallel --stop-on-failure
