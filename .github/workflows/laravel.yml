@@ -15,7 +15,7 @@ jobs:
         image: postgres:16
         env:
           POSTGRES_PASSWORD: root
-          POSTGRES_DB: teste
+          POSTGRES_DB: livros
         ports:
           - 5432:5432
         options: >-
@@ -25,68 +25,44 @@ jobs:
           --health-retries=5
 
     steps:
-      # 1️⃣ Pegar o código
       - name: Checkout do código
         uses: actions/checkout@v3
 
-      # 2️⃣ Configurar PHP
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.1
           extensions: mbstring, bcmath, pdo_pgsql
 
-      # 3️⃣ Cache do Composer
-      - name: Cache Composer
-        uses: actions/cache@v3
-        with:
-          path: vendor
-          key: ${{ runner.os }}-composer-${{ hashFiles('livros-api/composer.lock') }}
-          restore-keys: ${{ runner.os }}-composer-
-
-      # 4️⃣ Instalar dependências do Laravel
       - name: Composer install
         run: |
           cd livros-api
-          composer install --no-interaction --prefer-dist --optimize-autoloader
+          composer install
 
-      # 5️⃣ Configurar .env
-      - name: Configurar .env
+      - name: Copiar .env
         run: |
           cp livros-api/.env.example livros-api/.env
           sed -i 's/DB_CONNECTION=.*/DB_CONNECTION=pgsql/' livros-api/.env
-          sed -i 's/DB_HOST=.*/DB_HOST=postgres/' livros-api/.env
+          sed -i 's/DB_HOST=.*/DB_HOST=localhost/' livros-api/.env
           sed -i 's/DB_PORT=.*/DB_PORT=5432/' livros-api/.env
           sed -i 's/DB_DATABASE=.*/DB_DATABASE=teste/' livros-api/.env
           sed -i 's/DB_USERNAME=.*/DB_USERNAME=postgres/' livros-api/.env
           sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=root/' livros-api/.env
 
-      # 6️⃣ Esperar PostgreSQL ficar pronto
-      - name: Esperar PostgreSQL ficar pronto
-        run: |
-          for i in {1..30}; do
-            pg_isready -h postgres -U postgres && break
-            echo "Esperando PostgreSQL..."
-            sleep 2
-          done
+      - name: Verificar .env final
+        run: cat livros-api/.env
 
-      # 7️⃣ Limpar cache Laravel
-      - name: Limpar cache Laravel
+      - name: Limpar cache de configuração
         run: |
           cd livros-api
           php artisan config:clear
-          php artisan cache:clear
-          php artisan route:clear
-          php artisan view:clear
 
-      # 8️⃣ Rodar migrations
       - name: Rodar migrations
         run: |
           cd livros-api
           php artisan migrate:fresh --seed
 
-      # 9️⃣ Rodar testes Laravel
       - name: Rodar testes Laravel
         run: |
           cd livros-api
-          php artisan test --parallel --stop-on-failure
+          php artisan test
