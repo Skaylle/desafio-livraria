@@ -57,7 +57,6 @@ const AutoresNovo = () => {
       return;
     }
 
-    // Envia os livros selecionados junto
     const dataToSend = {
       ...formValues,
       livros: selectedIds,
@@ -72,11 +71,9 @@ const AutoresNovo = () => {
           onBack();
         }, 500);
       } else {
-        // Mostra mensagem detalhada do backend se existir
         alert(response.message || 'Erro ao cadastrar o autor.');
       }
     } catch (error) {
-      // Fallback para erro inesperado
       alert(error?.response?.data?.message || error.message || 'Erro inesperado.');
     }
   };

@@ -14,7 +14,7 @@ const LivroForm = ({
   setFormValues,
   onSubmit,
   onBack,
-  data = [], // autores
+  data = [],
   pagination,
   onPageChange,
   onSelectionChange,
@@ -31,7 +31,7 @@ const LivroForm = ({
   const [showCollapseAutores, setShowCollapseAutores] = React.useState(false);
   const [showCollapseAssuntos, setShowCollapseAssuntos] = React.useState(false);
   return (
-    <form className="w-75 bg-white p-4 rounded shadow">
+    <div className="w-75 bg-white p-4 rounded shadow">
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h4 className="mb-0">{labelForm}</h4>
       </div>
@@ -172,7 +172,7 @@ const LivroForm = ({
           Cancelar
         </button>
       </div>
-    </form>
+    </div>
   );
 };
 

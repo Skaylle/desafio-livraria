@@ -74,8 +74,9 @@ livros/
 1. Clone o repositório
 2. Configure o .env do backend
 3. Acesse a pasta raiz do projeto e rode `docker-compose up --build`
-4. Acesse o frontend em `http://localhost:3000` e a API em `http://localhost:8000`
-5. Documentação Swagger: `http://localhost:8000/api/documentation`
+4. Se as configuração do banco estiverem certa o buid executa as migration e seeders, criando as tabelas e populando o banco
+5. Acesse o frontend em `http://localhost:3000` e a API em `http://localhost:8000`
+6. Documentação Swagger: `http://localhost:8000/api/documentation`
 
 ---
 

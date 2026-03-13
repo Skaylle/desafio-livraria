@@ -24,7 +24,6 @@ const LivrosCreate = () => {
   const [pagination, setPagination] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(5);
-
   const [assuntos, setAssuntos] = useState([]);
   const [assuntosPagination, setAssuntosPagination] = useState({});
   const [assuntosCurrentPage, setAssuntosCurrentPage] = useState(1);
@@ -118,6 +117,7 @@ const LivrosCreate = () => {
   };
 
   const onSelectionChange = (values) => {
+    setSelectedAssuntos(values);
     setFormValues({ ...formValues, selectedAuthors: values });
   };
 
@@ -142,6 +142,7 @@ const LivrosCreate = () => {
         pagination={pagination}
         onPageChange={loadAutores}
         onSelectionChange={onSelectionChange}
+        defaultSelected={formValues.selectedAuthors || []}
         defaultPageSize={pageSize}
         assuntos={assuntos}
         assuntosPagination={assuntosPagination}

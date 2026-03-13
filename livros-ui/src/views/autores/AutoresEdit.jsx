@@ -71,7 +71,6 @@ const AutoresEdit = () => {
       return;
     }
 
-    // Envia os livros selecionados junto
     const dataToSend = {
       ...formValues,
       livros: selectedIds,

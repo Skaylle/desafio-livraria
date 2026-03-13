@@ -21,7 +21,7 @@ const AssuntoForm = ({
 }) => {
   const [showCollapseLivros, setShowCollapseLivros] = React.useState(false);
   return (
-    <form className="w-75 bg-white p-4 rounded shadow">
+    <div className="w-75 bg-white p-4 rounded shadow">
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h4 className="mb-0">{labelForm}</h4>
       </div>
@@ -70,7 +70,7 @@ const AssuntoForm = ({
           Cancelar
         </button>
       </div>
-    </form>
+    </div>
   );
 };
 
