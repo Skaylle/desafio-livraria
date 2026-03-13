@@ -15,7 +15,7 @@ jobs:
         image: postgres:16
         env:
           POSTGRES_PASSWORD: root
-          POSTGRES_DB: livros
+          POSTGRES_DB: teste
         ports:
           - 5432:5432
         options: >-
@@ -43,7 +43,7 @@ jobs:
         run: |
           cp livros-api/.env.example livros-api/.env
           sed -i 's/DB_CONNECTION=.*/DB_CONNECTION=pgsql/' livros-api/.env
-          sed -i 's/DB_HOST=.*/DB_HOST=localhost/' livros-api/.env
+          sed -i 's/DB_HOST=.*/DB_HOST=db/' livros-api/.env
           sed -i 's/DB_PORT=.*/DB_PORT=5432/' livros-api/.env
           sed -i 's/DB_DATABASE=.*/DB_DATABASE=teste/' livros-api/.env
           sed -i 's/DB_USERNAME=.*/DB_USERNAME=postgres/' livros-api/.env
