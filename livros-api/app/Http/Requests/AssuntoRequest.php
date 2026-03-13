@@ -17,8 +17,6 @@ class AssuntoRequest extends FormRequest
     {
         return [
             'descricao' => 'required|string|max:20',
-            'livros_ids' => 'sometimes|array',
-            'livros_ids.*' => 'integer|exists:livros,cod_livro',
         ];
     }
 

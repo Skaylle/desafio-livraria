@@ -80,9 +80,7 @@ class AssuntoController extends Controller
      */
     public function store(AssuntoRequest $request)
     {
-        $assunto = $this->repository->create($request);
-        $assunto->livros_ids = $assunto->livros->pluck('cod_livro');
-        return new DefaultResource($assunto);
+        return new DefaultResource($this->repository->create($request));
     }
 
     /**
@@ -110,11 +108,9 @@ class AssuntoController extends Controller
      *   )
      * )
      */
-    public function update(AssuntoRequest $request, Assunto $Assunto)
+    public function update(AssuntoRequest $request, Assunto $assunto)
     {
-        $assunto = $this->repository->update($request, $Assunto->cod_assunto);
-        $assunto->livros_ids = $assunto->livros->pluck('cod_livro');
-        return new DefaultResource($assunto);
+        return new DefaultResource($this->repository->update($request, $assunto->cod_assunto));
     }
 
     /**
@@ -138,12 +134,9 @@ class AssuntoController extends Controller
      *   )
      * )
      */
-    public function show(Assunto $Assunto)
+    public function show(Assunto $assunto)
     {
-        $assunto = $this->repository->find($Assunto->cod_assunto);
-        $assunto->load('livros');
-        $assunto->livros_ids = $assunto->livros->pluck('cod_livro');
-        return new DefaultResource($assunto);
+        return new DefaultResource($this->repository->find($assunto->cod_assunto));
     }
 
     /**

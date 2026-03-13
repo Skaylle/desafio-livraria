@@ -34,38 +34,34 @@ class AssuntoRepository extends DefaultRepository implements RepositoryInterface
 
     public function create(Request $request)
     {
-        $arrSave = $request->except('livros_ids');
-        $livrosIds = $request->input('livros_ids', []);
+        $arrSave = $request->all();
+
         $assunto = Assunto::create($arrSave);
-        if (!empty($livrosIds)) {
-            $assunto->livros()->sync($livrosIds);
+
+        if(!empty($request->get('selectedLivros'))) {
+            $assunto->livros()->attach($request->get('selectedLivros'));
         }
-        // Retornar assunto com livros_ids para o frontend
-        $assunto->load('livros');
-        $assunto->livros_ids = $assunto->livros->pluck('cod_livro');
-        return $assunto->fresh();
+
+        return $assunto->load('livros');
     }
 
     public function update(Request $request, $id)
     {
-        $model = Assunto::find($id);
-        $arrSave = $request->except('livros_ids');
-        $livrosIds = $request->input('livros_ids', []);
-        $model->update($arrSave);
-        if (!empty($livrosIds)) {
-            $model->livros()->sync($livrosIds);
-        } else {
-            $model->livros()->detach();
+        $assunto = Assunto::find($id);
+        $arrSave = $request->all();
+
+        $assunto->update($arrSave);
+
+        if(!empty($request->get('selectedLivros'))) {
+            $assunto->livros()->sync($request->get('selectedLivros'));
         }
-        // Retornar assunto com livros_ids para o frontend
-        $model->load('livros');
-        $model->livros_ids = $model->livros->pluck('cod_livro');
-        return $model;
+
+        return $assunto->load('livros');
     }
 
     public function find($id): Model|Collection|array|Assunto|null
     {
-        return Assunto::find($id);
+        return Assunto::with('livros')->find($id);
     }
 
     public function delete($id): int

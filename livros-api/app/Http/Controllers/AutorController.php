@@ -108,9 +108,9 @@ class AutorController extends Controller
      *   )
      * )
      */
-    public function update(AutorRequest $request, Autor $Autor)
+    public function update(AutorRequest $request, Autor $autor)
     {
-        return new DefaultResource($this->repository->update($request, $Autor->cod_autor));
+        return new DefaultResource($this->repository->update($request, $autor->cod_autor));
     }
 
     /**
@@ -134,9 +134,9 @@ class AutorController extends Controller
      *   )
      * )
      */
-    public function show(Autor $Autor)
+    public function show(Autor $autor)
     {
-        return new DefaultResource($this->repository->find($Autor->cod_autor));
+        return new DefaultResource($this->repository->find($autor->cod_autor));
     }
 
     /**

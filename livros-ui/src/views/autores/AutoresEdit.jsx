@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { fetchAutor, updateAutor } from '../../services/autoresService.js';
 import { fetchLivros } from '../../services/livrosService.js';
@@ -25,26 +24,26 @@ const AutoresEdit = () => {
     }
   }, [id]);
 
-  const getAutor = async (autorId) => {
-    const result = await fetchAutor(autorId);
-    if (result.success) {
-      setFormValues(result.data);
-      // Marca livros relacionados
-      if (result.data && result.data.livros) {
-        setSelectedIds(result.data.livros.map(l => l.cod_livro));
-      }
-    } else {
-      alert('Erro ao buscar os dados, tente novamente!');
-      navigate('/autores');
-    }
-  };
-
   const loadLivros = async (page = 1, limit = defaultPageSize) => {
     const result = await fetchLivros({ page, limit });
     if (result.success) {
       setLivros(result.data);
       setPagination(result.pagination);
       setDefaultPageSize(limit);
+    }
+  };
+
+  const getAutor = async (autorId) => {
+    const result = await fetchAutor(autorId);
+    if (result.success) {
+      setFormValues(result.data);
+     
+      if (result.data && result.data.livros) {
+        setSelectedIds(result.data.livros.map((l) => l.cod_livro));
+      }
+    } else {
+      alert('Erro ao buscar os dados, tente novamente!');
+      navigate('/autores');
     }
   };
 

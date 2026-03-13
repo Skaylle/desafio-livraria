@@ -16,26 +16,18 @@ const AssuntosEdit = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(5);
   const [selectedLivros, setSelectedLivros] = useState([]);
-  const [defaultLivrosLoaded, setDefaultLivrosLoaded] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    getAssunto();
+    if (id) {
+      getAssunto();
+      fetchLivrosList();
+    }
   }, [id]);
 
-  useEffect(() => {
-    fetchLivrosList();
-  }, []);
-
-   useEffect(() => {
-    if (formValues && formValues.livros_ids && !defaultLivrosLoaded) {
-      setSelectedLivros(formValues.livros_ids);
-      setDefaultLivrosLoaded(true);
-    }
-  }, [formValues, defaultLivrosLoaded]);
-
   const fetchLivrosList = async (page = currentPage, limit = pageSize) => {
-    const result = await fetchLivros({page, limit});
+    const result = await fetchLivros({ page, limit });
     if (result.success) {
       const { data, pagination, current_page, per_page } = result;
 
@@ -50,8 +42,9 @@ const AssuntosEdit = () => {
     const result = await fetchAssunto(id);
     if (result.success) {
       setFormValues({ ...result.data });
-      if (result.data && result.data.livros_ids) {
-        setSelectedLivros(result.data.livros_ids);
+
+      if (result.data && result.data.livros) {
+        setSelectedLivros(result.data.livros.map((l) => l.cod_livro));
       }
     } else {
       alert('Erro ao buscar os dados, tente novamente!');
@@ -78,6 +71,7 @@ const AssuntosEdit = () => {
 
   const handleLivrosSelectionChange = (selectedRows) => {
     setSelectedLivros(selectedRows);
+    setFormValues((prev) => ({ ...prev, selectedLivros: selectedRows }));
   };
 
   const handleEdit = async () => {
@@ -88,8 +82,7 @@ const AssuntosEdit = () => {
       return;
     }
     try {
-      // Send selectedLivros as livros_ids
-      const payload = { ...formValues, livros_ids: selectedLivros };
+      const payload = { ...formValues, livros: selectedLivros };
       const response = await updateAssunto(id, payload);
       if (response.success) {
         alert(response.message);

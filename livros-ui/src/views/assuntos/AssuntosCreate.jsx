@@ -63,7 +63,7 @@ const AssuntosCreate = () => {
       return;
     }
     try {
-      const payload = { ...formValues, livros_ids: selectedLivros };
+      const payload = { ...formValues, selectedLivros: selectedLivros };
       const response = await createAssunto(payload);
       if (response.success) {
         alert(response.message);
